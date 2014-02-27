@@ -1,0 +1,18 @@
+<section class="playlist-container">
+    <h1 class="heading">Playlista</h1>
+    <table class="results-tracks">
+        <tbody>
+        </tbody>
+    </table>
+</section>
+<script type="text/template" id="template-playlist">
+    <tr data-id="<%= id %>">
+        <td class="title">
+            <a href="<%= url %>" title="<%= title %>"><%= title %></a>
+        </td>
+        <td class="actions">
+            <span class="remove">Usuń z playlisty</span>
+        </td>
+    </tr>
+</script>
+

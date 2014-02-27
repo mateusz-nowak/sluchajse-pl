@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Wyszukiwarka mp3, mp3 do pobrania, darmowe mp3, najlepsze mp3{% endblock %}
+{% block description %}Tylko u nas znajdziesz najlepsze darmowe mp3 do pobrania za darmo. Możesz użyć także naszego mechanizmu - wyszukiwarka mp3 pozwoli Ci na szybkie wyszukanie interesujących Cię utworów muzycznych - a to wszystko za darmo. Bez płacenia.{% endblock %}
+
+{% block body %}
+    <h1 class="heading">Najnowsze utwory</h1>
+    <table class="table--striped results-tracks">
+        <tbody>
+        {% for track in lastTracks %}
+            <tr data-id="{{ track._id }}">
+                <td class="title">
+                    <a href="/mp3/{{ track.slug }}" title="{{ track.name }}">{{ track.name }}</a>
+                </td>
+                <td class="duration">{{ track.duration }}</td>
+                <td class="actions">
+                    <span class="playlist">Dodaj do playlisty</span>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h1 class="heading heading-margin-top">Najczęściej odsłuchiwane</h1>
+    <table class="table--striped results-tracks">
+        <tbody>
+        {% for track in topTracks %}
+            <tr data-id="{{ track._id }}">
+                <td class="title">
+                    <a href="/mp3/{{ track.slug }}" title="{{ track.name }}">{{ track.name }}</a>
+                </td>
+                <td class="duration">{{ track.duration }}</td>
+                <td class="actions">
+                    <span class="playlist">Dodaj do playlisty</span>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

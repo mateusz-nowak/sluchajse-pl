@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ track.name }} - wyszukiwarka mp3, mp3 do pobrania, darmowe mp3{% endblock %}
+{% block description %}Przesłuchujesz właśnie utwór {{ track.name }}. Tylko u nas znajdziesz najlepsze darmowe mp3 do pobrania za darmo. Możesz użyć także naszego mechanizmu - wyszukiwarka mp3 pozwoli Ci na szybkie wyszukanie interesujących Cię utworów muzycznych - a to wszystko za darmo.{% endblock %}
+
+{% block body %}
+    <h1 class="heading">{{ track.name }}</h1>
+    <article class="track">
+        <div class="image"></div>
+        <div class="metadata">
+            <ul>
+                <li>Długość utworu: <span>{{ track.duration }}</span></li>
+                <li>Dodano dnia: <span>{{ track.createdAt.date|date('Y/m/d') }}</span></li>
+                <li>Odsłuchań: <span>{{ track.listen }}</span></li>
+            </ul>
+        </div>
+    </article>
+    <article class="comments">
+        <fb:comments href="http://www.sluchajse.pl/mp3/{{ slug }}" numposts="5" data-width="960px" colorscheme="light"></fb:comments>
+    </article>
+{% endblock %}

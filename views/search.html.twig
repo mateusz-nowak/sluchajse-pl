@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ query }} - wyszukiwarka mp3, mp3 do pobrania, darmowe mp3{% endblock %}
+
+{% block description %}
+{% if result.pagination is defined %}
+Właśnie zacząłeś przeszukiwać {{ query }}. Znalazłem dla Ciebie: {{ result.pagination.total_items }} utworów. Tylko u nas znajdziesz najlepsze darmowe mp3 do pobrania za darmo. Możesz użyć także naszego mechanizmu - wyszukiwarka mp3 pozwoli Ci na szybkie wyszukanie interesujących Cię utworów muzycznych - a to wszystko za darmo. Bez płacenia.
+{% else %}
+Właśnie zacząłeś przeszukiwać {{ query }}. Nie znalazłem nic. Tylko u nas znajdziesz najlepsze darmowe mp3 do pobrania za darmo. Możesz użyć także naszego mechanizmu - wyszukiwarka mp3 pozwoli Ci na szybkie wyszukanie interesujących Cię utworów muzycznych - a to wszystko za darmo. Bez płacenia.
+{% endif %}
+{% endblock %}
+
+{% block result_found %}
+    <h1 class="heading">Znaleziono: {{ result.pagination.total_items }}</h1>
+    <table class="table--striped results-tracks">
+        <tbody>
+            {% for track in result.items %}
+                <tr data-id="{{ track.file_id }}">
+                    <td class="title">
+                        <a href="/mp3/{{ track.file_id }}-{{ track.slug.artist }}-{{ track.slug.track }}" title="{{ track.artist.name }} - {{ track.title }}">{{ track.artist.name }} - {{ track.title }}</a>
+                    </td>
+                    <td class="duration">{{ track.duration }}</td>
+                    <td class="actions">
+                        <span class="playlist">Dodaj do playlisty</span>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagerfanta">
+        {{ pagerfanta(pager) }}
+    </div>
+{% endblock %}
+
+{% block result_notfound %}
+    <h1 class="heading">Znaleziono: 0</h1>
+{% endblock %}
+
+{% block body %}
+    {% if result.pagination is defined %}
+        {{ block('result_found') }}
+    {% else %}
+        {{ block('result_notfound') }}
+    {% endif %}
+{% endblock %}

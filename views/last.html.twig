@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ostatnio szukane - wyszukiwarka mp3, mp3 do pobrania, darmowe mp3{% endblock %}
+{% block description %}Sprawdź ostatnio szukane utwory. Tylko u nas znajdziesz najlepsze darmowe mp3 do pobrania za darmo. Możesz użyć także naszego mechanizmu - wyszukiwarka mp3 pozwoli Ci na szybkie wyszukanie interesujących Cię utworów muzycznych - a to wszystko za darmo. Bez płacenia.{% endblock %}
+
+{% block body %}
+    <h1 class="heading">Ostatnie wyszukiwania</h1>
+    <ul class="last-searched">
+        {% for search in searches %}
+            <li><a href="/search?search={{ search.search|url_encode }}">{{ search.search }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

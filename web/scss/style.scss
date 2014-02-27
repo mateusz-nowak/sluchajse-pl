@@ -1,0 +1,289 @@
+@import 'inuit.css/_inuit.scss';
+@import '_vars.scss';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+body {
+    background: $body-background-color;
+    font-family: 'Open Sans', sans-serif;
+    @include font-size(18px);
+    font-weight: 300;
+}
+
+.module {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    @include media-query(portable) {
+        padding: 10px;
+    }
+}
+
+input, textarea {
+    outline: none;
+}
+
+header {
+    padding: 20px;
+    background: $header-background;
+    form {
+        @extend .text--center;
+        padding-top: 20px;
+        font-size: 0;
+        input {
+            @include font-size(18px);
+            background: $color-white;
+            padding: 10px;
+            margin: 0;
+            border: 0;
+            &[type="text"] {
+                width: 60%;
+                font-weight: 400;
+            }
+            &[type="submit"] {
+                background: $color-hover;
+                color: $color-white;
+                font-weight: 700;
+            }
+        }
+    }
+    h1 {
+        @extend .text--center;
+        margin: auto;
+        width: 250px;
+        background: url(../images/logo.png) no-repeat left;
+        background-size: 50px;
+        @include font-size(32px);
+        color: $color-hover;
+        font-weight: 600;
+        padding-left: 55px;
+        span {
+            color: $color-white;
+            font-weight: 300;
+        }
+    }
+    h2 {
+        @include font-size(14px);
+        @extend .text--center;
+        color: $color-white;
+        padding-top: 20px;
+        font-weight: 300;
+        margin: 0;
+        span {
+            font-weight: 700;
+        }
+    }
+}
+
+nav {
+    @extend .text--center;
+    -webkit-box-shadow: 0px 4px 10px 0px $nav-shadow-color;
+    -moz-box-shadow:    0px 4px 10px 0px $nav-shadow-color;
+    box-shadow:         0px 4px 10px 0px $nav-shadow-color;
+    .module {
+        position: relative;
+    }
+    ul {
+        list-style: none;
+        display: inline;
+        li {
+            display: inline-block;
+            a {
+                @include font-size(16px);
+                text-decoration: none;
+                padding: 10px 8px;
+                color: $color-black;
+                display: block;
+                &:hover {
+                    border-bottom: 4px solid $nav-color-hover;
+                }
+            }
+        }
+        @media screen and(max-width: 800px) {
+            display: none;
+        }
+    }
+}
+
+.context {
+    @extend .module;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    h1.heading {
+        @include font-size(24px);
+        font-weight: 400;
+        &.heading-margin-top {
+            margin-top: 40px;
+        }
+    }
+    .playlist-container {
+        margin-bottom: 40px;
+        .results-tracks {
+            tr {
+                td {
+                    padding: 2px;
+                    &.title {
+                        background-size: 20px;
+                        a {
+                            @include font-size(14px);
+                            padding-left: 20px;
+                        }
+                    }
+                    &.actions {
+                        @extend .text--right;
+                        .remove {
+                            @include font-size(12px);
+                            font-weight: 400;
+                            padding-left: 30px;
+                            background: url(../images/remove.png) no-repeat left;
+                            background-size: 20px;
+                            cursor: pointer;
+                            &:hover {
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ul.last-searched {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline;
+        li {
+            display: inline-block;
+            padding: 5px;
+            a {
+                color: $color-black;
+                text-decoration: none;
+                &:hover {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .comments {
+        margin-top: 30px;
+        @include media-query(portable) {
+            display: none;
+        }
+    }
+    .track {
+        @extend .grid;
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+        .image,
+        .metadata {
+            @include font-size(14px);
+            @extend .grid__item;
+        }
+
+        .image {
+            @extend .one-quarter;
+            height: 240px;
+            background: url(../images/mp3-lg.png) no-repeat;
+            background-size: 100%;
+        }
+
+        .metadata {
+            @extend .three-quarters;
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li {
+                    border-bottom: 1px solid #eee;
+                    padding-bottom: 10px;
+                    span {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+    table.results-tracks {
+        margin: 0;
+        .title {
+            background: url(../images/mp3.png) left no-repeat;
+            background-size: 40px;
+            a {
+                color: $color-black;
+                text-decoration: none;
+                padding: 5px 0 0 35px;
+                &:hover {
+                    font-weight: 400;
+                }
+                @include media-query(palm) {
+                    @include font-size(12px);
+                }
+            }
+        }
+        .duration {
+          @include media-query(portable) {
+            display: none;
+          }
+          @include font-size(12px);
+          @extend .text--right;
+        }
+        .actions {
+            @extend .text--right;
+            .playlist {
+                @include font-size(12px);
+                font-weight: 400;
+                padding-left: 30px;
+                background: url(../images/playlist.png) no-repeat left;
+                background-size: 20px;
+                cursor: pointer;
+                &:hover {
+                    font-weight: 600;
+                }
+            }
+            @include media-query(palm) {
+                display: none;
+            }
+        }
+    }
+    .pagerfanta {
+        @include font-size(14px);
+        margin-top: 30px;
+        font-weight: 400;
+        a, span {
+            color: $color-black;
+            text-decoration: none;
+            padding: 10px;
+            &:hover {
+                font-weight: 600;
+            }
+        }
+        &.current {
+            a {
+                font-weight: 700;
+            }
+        }
+        @include media-query(palm) {
+            @include font-size(11px);
+        }
+    }
+}
+
+footer {
+    @extend .grid;
+    @extend .module;
+    padding: 20px 10px;
+    font-weight: 400;
+    font-size: 0;
+    .description,
+    .copyrights {
+        @include font-size(12px);
+        @extend .one-half;
+        @extend .grid__item;
+    }
+    .copyrights {
+        @extend .text--right;
+    }
+    @media screen and(max-width: 800px) {
+        display: none;
+    }
+}

@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Buzz\Browser;
 use Silex\Provider\TwigServiceProvider;
 use FranMoreno\Silex\Provider\PagerfantaServiceProvider;
+use Symfony\Component\DomCrawler\Crawler;
 
 $app = new Application();
 $app['debug'] = true;
@@ -39,6 +40,36 @@ $app->get('/', function(Request $request) use ($app) {
         'lastTracks' => $lastTracks,
         'topTracks' => $topTracks
     ]);
+});
+
+$app->get('/mp3/{slug}/download', function(Request $request, $slug) use ($app) {
+    $id = (Integer) $slug;
+
+    /** @var MongoClient $mongo */
+    $mongo = $app['mongodb'];
+
+    $track = $mongo->selectCollection('tracks')->findOne([
+        '_id' => $id
+    ]);
+
+    $downloadUrl = sprintf('%s%s', 'http://www.mp3poisk.net', $track['download']);
+    $browser = new Browser();
+
+    $response = $browser->get($downloadUrl);
+
+    $crawler = new Crawler();
+    $crawler->addContent($response->getContent());
+
+    $trackDownloadUrl = sprintf('%s%s', 'http://www.mp3poisk.net', $crawler->filter('.btn-download')->attr('href'));
+
+    $stream = function () use ($trackDownloadUrl) {
+        readfile($trackDownloadUrl);
+    };
+
+    return $app->stream($stream, 200, array(
+        'Content-Type' => 'audio/mp3',
+        'Content-Disposition' => sprintf('attachment; filename="[%s] %s.mp3"', 'sluchajse.pl', $track['name'])
+    ));
 });
 
 $app->get('/mp3/{slug}', function(Request $request, $slug) use ($app) {
@@ -90,7 +121,7 @@ $app->get('/search', function(Request $request) use ($app) {
         throw new \InvalidArgumentException('Search query parameters must be greater than 2 chars');
     }
 
-    $query = str_replace('+', '-', urlencode($q));
+    $query = strtolower(preg_replace('/-{1,}/', '-', str_replace(' ', '-', preg_replace('/[-+=!@#$%^&*()\]\[\,\.\;\\\\\/]+/', '', $q))));
 
     $mongo->selectCollection('search')->update(['search' => $q], [
         '$set' => [
@@ -138,7 +169,8 @@ $app->get('/search', function(Request $request) use ($app) {
     return $app['twig']->render('search.html.twig', [
         'result' => $result,
         'query' => ucwords($q),
-        'pager' => $pagerfanta
+        'pager' => $pagerfanta,
+        'q' => $q
     ]);
 });
 

@@ -2819,6 +2819,14 @@ body {
     .module, .context, footer {
       padding: 10px; } }
 
+.btn {
+  padding: 5px;
+  color: white;
+  background: black;
+  text-decoration: none; }
+  .btn:hover {
+    background: #1593ed; }
+
 input, textarea {
   outline: none; }
 
@@ -2905,6 +2913,9 @@ nav {
       margin-top: 40px; }
   .context .playlist-container {
     margin-bottom: 40px; }
+    @media only screen and (max-width: 1023px) {
+      .context .playlist-container {
+        display: none; } }
     .context .playlist-container .results-tracks tr td {
       padding: 2px; }
       .context .playlist-container .results-tracks tr td.title {
@@ -2999,7 +3010,7 @@ nav {
       cursor: pointer; }
       .context table.results-tracks .actions .playlist:hover {
         font-weight: 600; }
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 1023px) {
       .context table.results-tracks .actions {
         display: none; } }
   .context .pagerfanta {

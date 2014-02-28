@@ -7,7 +7,9 @@
         "twig/twig": ">=1.8,<2.0-dev",
         "pagerfanta/pagerfanta": "dev-master",
         "franmomu/silex-pagerfanta-provider": "1.0.*@dev",
-        "getme/mongodb-silex-provider": "dev-master"
+        "getme/mongodb-silex-provider": "dev-master",
+        "symfony/css-selector": "dev-master",
+        "symfony/dom-crawler": "dev-master"
     },
     "autoload": {
         "psr-0": {

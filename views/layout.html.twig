@@ -5,6 +5,7 @@
     <title>{{ block('title') }}</title>
     <meta name="description" content="{{ block('description') }}" />
     <meta name="keywords" content="Darmowe mp3, Wyszukiwarka MP3, Najlepsze Mp3, Mp3 do pobrania, Pobierz mp3, Mp3 za darmo, Mp3 za free" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/css/style.css" type="text/stylesheet" />
     <script type="application/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="application/javascript" src="http://underscorejs.org/underscore-min.js"></script>
@@ -15,7 +16,7 @@
     <div class="module">
         <h1>sluchajse<span>.pl</span></h1>
         <form method="get" action="/search">
-            <input type="text" name="search" placeholder="Wpisz tytuł utworu, którego szukasz..." />
+            <input type="text" name="search" placeholder="Wpisz tytuł utworu, którego szukasz..." {% if q is defined %}value="{{ q }}"{% endif %} />
             <input type="submit" value="Szukaj" />
         </form>
         <h2>

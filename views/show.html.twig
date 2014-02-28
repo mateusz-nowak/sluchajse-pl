@@ -13,9 +13,10 @@
                 <li>Dodano dnia: <span>{{ track.createdAt.date|date('Y/m/d') }}</span></li>
                 <li>Odsłuchań: <span>{{ track.listen }}</span></li>
             </ul>
+            <a class="btn btn-download" href="/mp3/{{ track.slug }}/download">Pobierz ten utwór</a>
         </div>
     </article>
     <article class="comments">
-        <fb:comments href="http://www.sluchajse.pl/mp3/{{ slug }}" numposts="5" data-width="960px" colorscheme="light"></fb:comments>
+        <fb:comments href="http://www.sluchajse.pl/mp3/{{ track.slug }}" numposts="5" data-width="960px" colorscheme="light"></fb:comments>
     </article>
 {% endblock %}

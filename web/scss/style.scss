@@ -18,6 +18,16 @@ body {
     }
 }
 
+.btn {
+    padding: 5px;
+    color: $color-white;
+    background: $color-black;
+    text-decoration: none;
+    &:hover {
+        background: $color-hover;
+    }
+}
+
 input, textarea {
     outline: none;
 }
@@ -117,6 +127,9 @@ nav {
     }
     .playlist-container {
         margin-bottom: 40px;
+        @include media-query(portable) {
+            display: none;
+        }
         .results-tracks {
             tr {
                 td {
@@ -240,8 +253,8 @@ nav {
                     font-weight: 600;
                 }
             }
-            @include media-query(palm) {
-                display: none;
+            @include media-query(portable) {
+              display: none;
             }
         }
     }

@@ -2908,9 +2908,15 @@ nav {
     font-size: 24px;
     font-size: 1.5rem;
     line-height: 1;
-    font-weight: 400; }
+    font-weight: 300; }
     .context h1.heading.heading-margin-top {
       margin-top: 40px; }
+  .context h2.subheading {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.33333;
+    font-weight: 400;
+    margin: 10px 0; }
   .context .playlist-container {
     margin-bottom: 40px; }
     @media only screen and (max-width: 1023px) {

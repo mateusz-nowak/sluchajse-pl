@@ -73,4 +73,8 @@ $(function() {
         e.preventDefault();
         e.stopPropagation();
     });
+
+    audiojs.events.ready(function() {
+        audiojs.createAll();
+    });
 });

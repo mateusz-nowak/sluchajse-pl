@@ -120,10 +120,15 @@ nav {
     padding-bottom: 20px;
     h1.heading {
         @include font-size(24px);
-        font-weight: 400;
+        font-weight: 300;
         &.heading-margin-top {
             margin-top: 40px;
         }
+    }
+    h2.subheading {
+      @include font-size(18px);
+      font-weight: 400;
+      margin: 10px 0;
     }
     .playlist-container {
         margin-bottom: 40px;

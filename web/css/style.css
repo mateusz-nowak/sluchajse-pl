@@ -3051,3 +3051,36 @@ footer {
   @media screen and (max-width: 800px) {
     footer {
       display: none; } }
+
+.likebox {
+  display: none; }
+  .likebox .like-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+    opacity: .5; }
+  .likebox .like-container-content {
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+    padding: 20px;
+    background: #fff;
+    font-size: 14px; }
+    .likebox .like-container-content .close {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 12px; }
+      .likebox .like-container-content .close .btn-close {
+        cursor: pointer;
+        padding: 10px;
+        font-weight: 700;
+        border: 1px solid #ccc;
+        background: #eee;
+        padding: 5px; }
+    .likebox .like-container-content .like {
+      text-align: center;
+      margin-top: 50px; }

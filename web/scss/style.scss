@@ -305,3 +305,42 @@ footer {
         display: none;
     }
 }
+
+.likebox {
+    display: none;
+    .like-container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        opacity: .5;
+    }
+    .like-container-content {
+        position: fixed;
+        top: 30%;
+        left: 30%;
+        right: 30%;
+        padding: 20px;
+        background: #fff;
+        font-size: 14px;
+        .close {
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: 12px;
+            .btn-close {
+                cursor: pointer;
+                padding: 10px;
+                font-weight: 700;
+                border: 1px solid #ccc;
+                background: #eee;
+                padding: 5px;
+            }
+        }
+        .like {
+            text-align: center;
+            margin-top: 50px;
+        }
+    }
+}

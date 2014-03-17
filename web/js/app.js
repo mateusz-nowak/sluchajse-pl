@@ -2,6 +2,7 @@ $(function() {
     var $playlistContainer = $('.playlist-container');
     var $templatePlaylistTrack = $('#template-playlist');
     var PLAYLIST_STORAGE_KEY = 'playlisttracks';
+    var $likebox = $('.likebox');
 
     var updatePlaylist = function() {
         var trackCollection = JSON.parse(localStorage.getItem(PLAYLIST_STORAGE_KEY));
@@ -16,7 +17,21 @@ $(function() {
         }
     };
 
+    var processLikebox = function() {
+        var seen = sessionStorage.getItem('likebox');
+
+        if (!seen) {
+            $likebox.show();
+            sessionStorage.setItem('likebox', true)
+        }
+
+        $likebox.find('.btn-close').on('click', function() {
+            $likebox.hide();
+        });
+    };
+
     updatePlaylist();
+    processLikebox();
 
     $playlistContainer.find('.remove').bind('click', function(e) {
         var item = localStorage.getItem(PLAYLIST_STORAGE_KEY);

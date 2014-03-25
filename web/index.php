@@ -110,8 +110,10 @@ $app->get('/last', function(Request $request) use ($app) {
 $app->get('/search', function(Request $request) use ($app) {
     /** @var MongoClient $mongo */
     $mongo = $app['mongodb'];
+    $adapter = new \Buzz\Client\Curl();
+    $adapter->setProxy('111.206.81.248:80');
 
-    $browser = new Browser();
+    $browser = new Browser($adapter);
     $serializer = $app['serializer'];
 
     $q = $request->query->get('search');

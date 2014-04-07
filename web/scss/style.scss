@@ -307,21 +307,11 @@ footer {
 }
 
 .likebox {
-    display: none;
+    position: absolute;
     .like-container {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         background: #000;
-        opacity: .5;
     }
     .like-container-content {
-        position: fixed;
-        top: 30%;
-        left: 30%;
-        right: 30%;
         padding: 20px;
         background: #fff;
         font-size: 14px;
@@ -340,7 +330,6 @@ footer {
         }
         .like {
             text-align: center;
-            margin-top: 50px;
         }
     }
 }

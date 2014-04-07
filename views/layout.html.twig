@@ -35,19 +35,12 @@
     </div>
 </nav>
 <section class="likebox">
-    <section class="like-container">
-    </section>
-    <section class="like-container-content">
-        <div class="close">
-            <a class="btn-close">zamknij</a>
-        </div>
-        Jeżeli ta strona jest Twoim zdaniem warta uwagi, udostępnij ją na swojej tablicy. To pomoże nam w pozyskaniu nowych użytkowników, co da nam nowe możliwości rozwoju aplikacji - będziemy mogli tworzyć nowe komponenty, a Ty będziesz mógł korzystać z najlepszej wyszukiwarki mp3 w historii! Dzięki!
-        <div class="like">
-            <div class="fb-share-button" data-href="http://sluchajse.pl" data-width="50" data-type="box_count"></div>
-        </div>
-    </section>
+    <div class="fb-like" data-href="http://sluchajse.pl/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 </section>
 <section class="context">
+    <div class="fb-like" data-href="http://sluchajse.pl/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    <br/>
+    <br/>
     {% include '_playlist.html.twig' %}
     {{ block('body') }}
 </section>

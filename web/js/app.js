@@ -18,16 +18,20 @@ $(function() {
     };
 
     var processLikebox = function() {
-        var seen = sessionStorage.getItem('likebox');
+        var liked = sessionStorage.getItem('likebox-liked');
 
-        if (!seen) {
-            $likebox.show();
-            sessionStorage.setItem('likebox', true)
-        }
-
-        $likebox.find('.btn-close').on('click', function() {
+        if (liked == '1') {
+            console.log('liked');
             $likebox.hide();
-        });
+        } else {
+            $(document).on('mousemove', function(e) {
+                $likebox.css('left', e.pageX-20);
+                $likebox.css('top', e.pageY-10);
+                $likebox.fadeTo(0.1, 0.01);
+
+                sessionStorage.setItem('likebox-liked', 1);
+            });
+        }
     };
 
     updatePlaylist();
